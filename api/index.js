@@ -1,10 +1,10 @@
 import express from "express"
 import dotenv from "dotenv"
 import mongoose from "mongoose";
-import authRoute from "./routes/auth.js"
-import roomsRoute from "./routes/rooms.js"
-import usersRoute from "./routes/users.js"
-import hotelsRoute from "./routes/hotels.js"
+import authRoute from "./routes/auth.route.js"
+import roomsRoute from "./routes/rooms.route.js"
+import usersRoute from "./routes/users.route.js"
+import hotelsRoute from "./routes/hotels.route.js"
 const app = express();
 dotenv.config()
 
