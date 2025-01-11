@@ -44,8 +44,7 @@ app.use((err, req, res, next) => {
 })
 
 app.listen(process.env.PORT, () => {
-    connect();
-    console.log("Connected to backend.")
     console.log(`Website is running on PORT ${process.env.PORT}`)
+    connect();
 })
 

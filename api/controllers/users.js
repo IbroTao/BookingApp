@@ -1,4 +1,5 @@
 import Users from "../models/users.js";
+import {createError} from "../utils/error.js"
 
 export const updateUserDetails = async(req, res, next) => {
     try{
@@ -28,9 +29,8 @@ export const getUser = async(req, res, next) => {
 }
 
 export const getUsers = async(req, res, next) => {
-    const failed = true;
-    if (failed) return next(createError(401, "You are not authenticated!"))
-
+    // const failed = true;
+    // if (failed) return next(createError(401, "You are not authenticated!"))
     try{
         const users = await Users.find();
         res.status(200).json(users);
