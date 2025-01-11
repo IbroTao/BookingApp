@@ -1,7 +1,6 @@
 import express from "express"
 import { deleteUser, getUser, getUsers, updateUserDetails } from "../controllers/users.js";
 import {verifyAdmin, verifyToken, verifyUser} from "../utils/verifyToken.js"
-import { createError } from "../utils/error.js";
 const router = express.Router();
 
 // TESTING ROUTES FOR USER AND ADMIN VERIFICATION
@@ -15,8 +14,8 @@ const router = express.Router();
 //     res.send(`Hello ${username}, you are logged in!`)
 // })
 
-router.get("/admin/:id",  verifyAdmin, (req, res, next) => {
-    res.send("Welcome Admin")
+router.get('/admin/:id', verifyAdmin, (req, res) => {
+    res.status(200).json("This is an admin")
 })
 
 router.put("/:id", verifyUser, updateUserDetails);

@@ -10,14 +10,12 @@ export const verifyToken = async(req, res, next) => {
     jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
         if(err) return next(createError(403, "Invalid token!"));
         req.user = user;
-        console.log(user);
         next()
     })
 };
 
 export const verifyUser = async(req, res, next) => {
     verifyToken(req, res, next, () => {
-        console.log(req.user)
         if(req.user.id === req.params.id || req.user.isAdmin) {
             next();
         } else {
@@ -28,11 +26,10 @@ export const verifyUser = async(req, res, next) => {
 
 export const verifyAdmin = async(req, res, next) => {
     verifyToken(req, res, next, () => {
-        console.log(req.user);
-        if(req.user.isAdmin !== true) {
-            return next(createError(403, "You are not authorized. Only an admin can perform this operation!"))
-        } else {
+        if(req.user.isAdmin) {
             next()
+        } else {
+            return next(createError(403, "Access denied. Admin only."))
         }
     })
 }
