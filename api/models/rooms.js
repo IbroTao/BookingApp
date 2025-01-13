@@ -29,7 +29,7 @@ const RoomSchema = new mongoose.Schema({
 
 
 [
-    {number: 101, unavailableDates: [01-01-2025, 02-01-2025]}
+    // {number: 101, unavailableDates: [01-01-2025,02-01-2025]}
 ]
 
 export default mongoose.model("rooms", RoomSchema)
